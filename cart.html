@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: skyblue;
+    }
+    .empty-msg {
+      font-size: 18px;
+      color: #888;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <div id="cart-items"></div>
+  <button onclick="placeOrder()" id="button">Place Order</button>
+  <br><br>
+  <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Catalog</a>
+
+  <script>
+    const cartItemsEl = document.getElementById('cart-items');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = "<p>Your cart is empty.</p>";
+        document.getElementById('button').disabled=true;
+    } else {
+      let table = `
+        <table>
+          <thead>
+            <tr>
+              <th>Item No</th>
+              <th>Product Name</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      cart.forEach((item, index) => {
+        table += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.name}</td>
+          </tr>
+        `;
+      });
+
+      table += `
+          </tbody>
+        </table>
+      `;
+
+      cartItemsEl.innerHTML = table;
+    }
+
+    function placeOrder() {
+      alert("Order placed successfully!");
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

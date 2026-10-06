@@ -1,0 +1,89 @@
+ body,
+ html {
+     margin: 0;
+     padding: 0;
+     height: 100%;
+     font-family: Arial, sans-serif;
+ }
+
+ .background {
+     background-image: url('./images/backgroun.jpg');
+     height: 100vh;
+     background-size: cover;
+     background-position: center;
+     display: flex;
+     align-items: center;
+     justify-content: end;
+     color: black;
+     text-align: center;
+     position: relative;
+      background-attachment: fixed;
+      font-weight: bold;
+ }
+
+
+
+ .right {
+     width: 500px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     padding: 40px;
+     height: 573px;
+     background: none;
+     
+
+ }
+
+ header,
+ footer {
+
+     color: whitesmoke;
+     padding: 20px;
+     text-align: center;
+ }
+
+ main {
+
+     font-size: 18px;
+     color: #333;
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     /* 2 columns */
+     gap: 130px;
+     margin-left: 93px;
+     font-weight: bold;
+ }
+
+ #imgBox img {
+     border-radius: 50px;
+     width: 80px;
+     height: 80px;
+ }
+
+ #imgBox {
+     text-align: center;
+
+ }
+
+  #imgBox a:hover{
+    color:lightskyblue;
+  }
+
+  
+
+ #imgBox a {
+     color: floralwhite;
+     font-size: larger;
+     font-weight: bold;
+    text-decoration: none;
+ }
+
+
+
+ #login {
+     height: 35px;
+     width: 90px;
+     background-color: cornflowerblue;
+     border-radius: 18px;
+ }

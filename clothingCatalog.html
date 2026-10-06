@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Catalog with Cart</title>
+  <!-- <link href="style.css" rel="stylesheet"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="products.css" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+  <header>
+    <h1>Product Catalog</h1>
+    <!-- <div class="cart">🛒 Cart: <span id="cart-count">0</span></div> -->
+     <div class="cart">
+      <a href="./index.html"><i class="fas fa-home"></i></a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    <div id="cart-count" class="cart-badge">0</div>
+  </div>
+  </header>
+
+  <div class="catalog-container">
+    <div class="product-card">
+      <img src="./images/clothes/kurta.jpg">
+      <div class="product-name">Men's Kurta</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/jean.jpg">
+      <div class="product-name">Men's Jean</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/womenDress.jpg">
+      <div class="product-name">Women's Dress</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/saree.jpg">
+      <div class="product-name">Women's Saree</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/blacksaree.jpg">
+      <div class="product-name">Women's Saree Black</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/cordset.jpg">
+      <div class="product-name">Coord Set</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/formal.jpg">
+      <div class="product-name">Men's Formal Shirt</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/formalwomen.jpg">
+      <div class="product-name">Women's Formal Dress</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/jogger.jpg">
+      <div class="product-name">Joggers</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/stripeshirt.jpg">
+      <div class="product-name">Men's Shirt Stripped</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/t-shirt.jpg">
+      <div class="product-name">Men's T-Shirt</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/clothes/trackpant.jpg">
+      <div class="product-name">Track Pant</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+  </div>
+</div>
+  <script>
+    let cartCount = 0;
+    const cartCountEl = document.getElementById('cart-count');
+    const buttons = document.querySelectorAll('.add-to-cart');
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+
+     buyNowButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        window.alert("Product has been placed");
+      });
+    });
+
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCountEl.textContent = cart.length;
+
+    // Add-to-cart button click
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const productName = button.parentElement.querySelector('.product-name').textContent;
+
+        // Add to cart array and update localStorage
+        cart.push({ name: productName });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update cart count display
+        cartCountEl.textContent = cart.length;
+      });
+    });
+
+   
+
+  </script>
+
+</body>
+</html>

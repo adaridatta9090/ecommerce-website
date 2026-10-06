@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Catalog with Cart</title>
+  <!-- <link href="style.css" rel="stylesheet"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="products.css" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+  <header>
+    <h1>Product Catalog</h1>
+    <!-- <div class="cart">🛒 Cart: <span id="cart-count">0</span></div> -->
+     
+     <div class="cart">
+      <a href="./index.html"><i class="fas fa-home"></i></a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    <div id="cart-count" class="cart-badge">0</div>
+  </div>
+  </header>
+
+  <div class="catalog-container">
+    <div class="product-card">
+      <img src="./images/accessories/sunglass.jpg">
+      <div class="product-name">Sun Glasses</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+     <div class="product-card">
+      <img src="./images/accessories/jewelery.jpg">
+      <div class="product-name">Jewelery</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/holder.jpg">
+      <div class="product-name">Phone Holder</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/strap.jpg">
+      <div class="product-name">Watch Strap-Blue</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/leatherbag.jpg">
+      <div class="product-name">Leather Bag</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/watch.jpg">
+      <div class="product-name">Men's Watch</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/hairclips.jpg">
+      <div class="product-name">Hair Clips for Girls</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/case.jpg">
+      <div class="product-name">Phone Case</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/braceletgirl.jpg">
+      <div class="product-name">Women Bracelet</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/bracelet.jpg">
+      <div class="product-name">Men's Bracelet</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/bluetooth.jpg">
+      <div class="product-name">Bluetooth</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/accessories/bely.jpg">
+      <div class="product-name">Leather Belt</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+   
+  </div>
+</div>
+  <script>
+    let cartCount = 0;
+    const cartCountEl = document.getElementById('cart-count');
+    const buttons = document.querySelectorAll('.add-to-cart');
+
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+
+     buyNowButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        window.alert("Product has been placed");
+      });
+    });
+
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCountEl.textContent = cart.length;
+
+    // Add-to-cart button click
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const productName = button.parentElement.querySelector('.product-name').textContent;
+
+        // Add to cart array and update localStorage
+        cart.push({ name: productName });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update cart count display
+        cartCountEl.textContent = cart.length;
+      });
+    });
+  </script>
+
+</body>
+</html>

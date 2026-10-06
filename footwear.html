@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Catalog with Cart</title>
+  <!-- <link href="style.css" rel="stylesheet"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="products.css" rel="stylesheet">
+</head>
+<body>
+<div class="background">
+  <header>
+    <h1>Product Catalog</h1>
+    <!-- <div class="cart">🛒 Cart: <span id="cart-count">0</span></div> -->
+     <div class="cart">
+      <a href="./index.html"><i class="fas fa-home"></i></a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    <div id="cart-count" class="cart-badge">0</div>
+  </div>
+  </header>
+
+  <div class="catalog-container">
+    <div class="product-card">
+      <img src="./images/footwears/shoes.jpg">
+      <div class="product-name">Men's Shoes</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+     <div class="product-card">
+      <img src="./images/footwears/flipflops.jpg">
+      <div class="product-name">Women's Flipflops</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/ethnic.jpg">
+      <div class="product-name">Men's Ethnic Wear</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/sandals.jpg">
+      <div class="product-name">Women's Slippers</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/fashionheels.jpg">
+      <div class="product-name">Heels Fashion</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/flats.jpg">
+      <div class="product-name">Women's Flats</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/heelsblack.jpg">
+      <div class="product-name">Women's black Heels</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/leathersandals.jpg">
+      <div class="product-name">Men's Leather Sandals</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/leathershoes.jpg">
+      <div class="product-name">Men's Leather Shoes</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/leatherwomen.jpg">
+      <div class="product-name">Women's Leather slippers</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/nikewhite.jpg">
+      <div class="product-name">Nike Shoes White</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="./images/footwears/partwear.jpg">
+      <div class="product-name">Women's Party Wear Heels</div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+   
+  </div>
+</div>
+  <script>
+    let cartCount = 0;
+    const cartCountEl = document.getElementById('cart-count');
+    const buttons = document.querySelectorAll('.add-to-cart');
+    const buyNowButtons = document.querySelectorAll('.buy-now');
+
+     buyNowButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        window.alert("Product has been placed");
+      });
+    });
+
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCountEl.textContent = cart.length;
+
+    // Add-to-cart button click
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const productName = button.parentElement.querySelector('.product-name').textContent;
+
+        // Add to cart array and update localStorage
+        cart.push({ name: productName });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Update cart count display
+        cartCountEl.textContent = cart.length;
+      });
+    });
+  </script>
+
+</body>
+</html>
